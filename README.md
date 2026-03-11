@@ -109,3 +109,17 @@ dbmeta \
   ]
 }
 ```
+
+## Releases (macOS binaries)
+
+This repo publishes macOS binaries to GitHub Releases when you push a tag like `v0.0.1`.
+
+```bash
+git tag v0.0.1
+git push origin v0.0.1
+```
+
+The release will contain:
+
+- `dbmeta-vX.Y.Z-aarch64-apple-darwin.tar.gz`
+- `dbmeta-vX.Y.Z-x86_64-apple-darwin.tar.gz`
