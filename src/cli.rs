@@ -3,8 +3,8 @@ use clap::{Parser, Subcommand};
 #[derive(Parser, Debug)]
 #[command(name = "dbmeta", version, about = "Database metadata as JSON")]
 pub struct Cli {
-    #[arg(long)]
-    pub dsn: String,
+    #[arg(long, env = "DBMETA_DSN")]
+    pub dsn: Option<String>,
 
     #[command(subcommand)]
     pub command: Commands,

@@ -12,7 +12,11 @@ use crate::cli::{Cli, Commands};
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<()> {
     let cli = Cli::parse();
-    let client = db::connect(&cli.dsn).await?;
+    let dsn = cli
+        .dsn
+        .as_deref()
+        .ok_or_else(|| anyhow::anyhow!("missing DSN: pass --dsn or set DBMETA_DSN"))?;
+    let client = db::connect(dsn).await?;
 
     match cli.command {
         Commands::Schemas => commands::schemas(&client).await?,

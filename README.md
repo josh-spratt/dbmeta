@@ -15,6 +15,17 @@ dbmeta --dsn <dsn> columns <table> --schema <schema>
 
 Default schema is `public`.
 
+### Environment variable
+
+You can avoid passing `--dsn` every time by setting `DBMETA_DSN`:
+
+```bash
+export DBMETA_DSN='postgres://postgres:pass@localhost:5432/postgres'
+dbmeta schemas
+dbmeta tables --schema public
+dbmeta columns orders --schema public
+```
+
 ## Quick test with Docker (Postgres)
 
 Start Postgres:
